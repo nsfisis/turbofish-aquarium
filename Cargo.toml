@@ -1,6 +1,6 @@
 [package]
 name = "turbofish-aquarium"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["nsfisis"]
 license = "MIT"
@@ -9,4 +9,4 @@ license = "MIT"
 
 [dependencies]
 rand = "0.8.5"
-termion = "2.0.1"
+termion = "4.0.3"
