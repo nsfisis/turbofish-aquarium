@@ -76,9 +76,10 @@ fn render(mut stdout: impl Write, school_of_fish: &Vec<Turbofish>, columns: u16)
 }
 
 fn main() {
+    let mut rng = thread_rng();
     let mut stdin = async_stdin().bytes();
     let mut stdout = stdout().into_raw_mode().unwrap();
-    let mut rng = thread_rng();
+    let mut stdout = termion::cursor::HideCursor::from(stdout);
 
     let (columns, lines) = terminal_size().unwrap();
 
