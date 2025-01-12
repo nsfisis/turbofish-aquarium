@@ -12,7 +12,7 @@ struct Turbofish {
     x: i16,
     y: u16,
     speed: i16,
-    bold: bool,
+    blink: bool,
 }
 
 impl Turbofish {
@@ -34,7 +34,7 @@ impl Turbofish {
 
     fn tick(&mut self) {
         self.x += self.speed;
-        self.bold = !self.bold;
+        self.blink = !self.blink;
     }
 }
 
@@ -55,8 +55,8 @@ fn render(mut stdout: impl Write, school_of_fish: &Vec<Turbofish>, columns: u16)
     for fish in school_of_fish {
         let x = fish.x;
         let y = fish.y;
-        if fish.bold {
-            write!(stdout, "{}", termion::style::Bold).unwrap();
+        if fish.blink {
+            write!(stdout, "{}", termion::color::Fg(termion::color::LightBlack)).unwrap();
         }
         write!(
             stdout,
@@ -91,7 +91,7 @@ fn main() {
             x,
             y,
             speed,
-            bold: rng.gen(),
+            blink: rng.gen(),
         });
     }
 
